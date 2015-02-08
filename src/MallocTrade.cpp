@@ -10,17 +10,9 @@ class MallocTrade {
 		long buyOffset = offset += 4;
 		long objectSize = offset += 1;
 		long objectOffset;
-  		byte * buffer;
+  		byte buffer[50000000];
 
     public:
-		MallocTrade(int size) {
-			buffer = (byte *) malloc(size * objectSize);
-		}
-
-		~MallocTrade() {
-			free(buffer);
-		}
-
 		long getObjectSize(){
 			return objectSize;
 		}

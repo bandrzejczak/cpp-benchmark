@@ -19,14 +19,12 @@ static void BM_List(benchmark::State& state) {
 BENCHMARK(BM_List);
 
 static void BM_Malloc(benchmark::State& state) {
-	MallocStockExchange * exchange;
 	while (state.KeepRunning()){    
-		exchange = new MallocStockExchange(TRADES_PER_DAY);
+		MallocStockExchange exchange;
 	    for (int i = 0; i < TRADES_PER_DAY; i++) {
-	      exchange->order(i, i, i, (i & 1) == 0);
+	      exchange.order(i, i, i, (i & 1) == 0);
 	    }
-	    exchange->dayBalance();
-	    delete exchange;
+	    exchange.dayBalance();
 	}
 }
 BENCHMARK(BM_Malloc);

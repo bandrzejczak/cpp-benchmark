@@ -5,10 +5,10 @@ CXXFLAGS := -Wall -pedantic -std=c++11 -lbenchmark -lpthread
 all: benchmark
 
 benchmark: Trade.o ListStockExchange.o MallocTrade.o  MallocStockExchange.o main.o
-	g++ $^ -o benchmark.out $(CXXFLAGS)
+	g++ $^ -O3 -flto -o benchmark.out $(CXXFLAGS)
 	
 %.o: src/%.cpp
-	g++ -c -o $@ $? $(CXXFLAGS)	
+	g++ -c -O3 -flto -o $@ $? $(CXXFLAGS)	
 
 remake: clean all
 
