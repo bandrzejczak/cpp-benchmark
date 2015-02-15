@@ -1,16 +1,16 @@
 #include <list>
-#include "MallocTrade.cpp"
+#include "StockExchange.cpp"
+#include "ByteArrayTrade.cpp"
 
-class MallocStockExchange{
+class ByteArrayStockExchange : public StockExchange{
 
 private:
   int recordsCount = 0;
-  MallocTrade flyweight;
+  ByteArrayTrade flyweight;
 
 public:
-
 	void order(int ticket, int amount, int price, bool buy) {
-		MallocTrade trade = get(recordsCount++);
+		ByteArrayTrade trade = get(recordsCount++);
     	trade.setTicket(ticket);
     	trade.setAmount(amount);
     	trade.setPrice(price);
@@ -20,14 +20,14 @@ public:
 	double dayBalance() {
 		double balance = 0;
 		for (int i = 0; i < recordsCount; i++) {
-			MallocTrade trade = get(i);
+			ByteArrayTrade trade = get(i);
 			balance += trade.getAmount() * trade.getPrice() * (trade.isBuy() ? 1 : -1);
 		}
 		return balance;
 	}
 
 private:
-	MallocTrade get(int index) {
+	ByteArrayTrade get(int index) {
 		int offset = index * flyweight.getObjectSize();
 		flyweight.setObjectOffset(offset);
 		return flyweight;

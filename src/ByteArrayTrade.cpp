@@ -1,7 +1,8 @@
-typedef unsigned char byte;
 #include <cstdlib>
 
-class MallocTrade {
+typedef unsigned char byte;
+
+class ByteArrayTrade {
     private:
     	long offset = 0;
 		long ticketOffset = offset += 0;
@@ -57,4 +58,4 @@ class MallocTrade {
 	    void setBuy(bool buy) {
     		buffer[objectOffset+buyOffset] = buy ? 1 : 0;
 	    }
-  };
+};

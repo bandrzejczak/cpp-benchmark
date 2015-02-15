@@ -4,7 +4,7 @@ CXXFLAGS := -Wall -pedantic -std=c++11 -lbenchmark -lpthread
 
 all: benchmark
 
-benchmark: Trade.o ListStockExchange.o MallocTrade.o  MallocStockExchange.o main.o
+benchmark: StockExchange.o Trade.o ListStockExchange.o ByteArrayTrade.o ByteArrayStockExchange.o main.o
 	g++ $^ -O3 -flto -o benchmark.out $(CXXFLAGS)
 	
 %.o: src/%.cpp
